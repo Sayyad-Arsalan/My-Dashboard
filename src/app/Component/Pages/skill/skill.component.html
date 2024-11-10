@@ -1,0 +1,30 @@
+<div class="skill-container">
+  <!-- Image Preview and File Input -->
+  <div class="image-upload">
+    <img *ngIf="svgPreview" [src]="svgPreview" alt="Skill Image" class="image-preview" />
+    <input *ngIf="!skillId" type="file" (change)="avatarHandler($event)" class="choose-file-btn" />
+  </div>
+
+  <!-- Skill Form -->
+  <form [formGroup]="skillForm" class="form">
+    <!-- Skill Field -->
+    <mat-form-field appearance="outline" class="form-field" [floatLabel]="'always'">
+      <mat-label>Skill</mat-label>
+      <input matInput formControlName="skill" placeholder="Enter skill" />
+    </mat-form-field>
+
+    <!-- Proficiency Field -->
+    <mat-form-field appearance="outline" class="form-field" [floatLabel]="'always'">
+      <mat-label>Proficiency (%)</mat-label>
+      <input matInput type="number" formControlName="proficiency" placeholder="Enter proficiency" />
+    </mat-form-field>
+
+    <!-- Cancel and Save Buttons -->
+    <div class="button-group">
+      <button mat-flat-button color="accent" (click)="cancel()">Cancel</button>
+      <button *ngIf="skillId" mat-flat-button color="warn" (click)="Delete()">Delete</button>
+      <button mat-flat-button color="primary" (click)="saveSkill()" [disabled]="!skillForm.valid">Save</button>
+    </div>
+
+  </form>
+</div>

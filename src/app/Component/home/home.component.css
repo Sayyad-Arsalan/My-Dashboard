@@ -1,0 +1,106 @@
+.sidenav-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.sidenav .mat-list-item {
+  display: flex;
+  align-items: center;
+}
+
+.sidenav .mat-list-item mat-icon {
+  margin-right: 10px; /* Adjust spacing between icon and text */
+}
+
+.sidenav .mat-list-item span {
+  line-height: 1; /* Ensures text is centered */
+}
+
+.sidenav {
+  width: 250px;
+}
+
+.sidenav-opened {
+  animation: slideIn 0.3s forwards;
+  margin-top: 55px;
+}
+
+.sidenav-closed {
+  animation: slideOut 0.3s forwards;
+  margin-top: 55px;
+
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+/* Fixed Header */
+.header-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; /* Ensure header stays on top */
+  background-color: #810081; /* Ensure toolbar color remains */
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  height: 56px; /* Toolbar height */
+}
+
+/* Ensure content does not overlap with fixed header */
+mat-sidenav-content .content {
+  padding: 10px;
+  margin-top: 56px; /* Offset by header height */
+  flex-grow: 1; /* Allow content to expand */
+}
+
+mat-sidenav-content {
+  transition: margin 0.3s;
+}
+
+/* Header Title */
+.header-title {
+  margin-left: 16px;
+  font-size: 1.25rem;
+  color: white;
+}
+
+/* Responsive Design: Collapse sidenav on smaller screens */
+@media (max-width: 768px) {
+  .sidenav {
+    width: 200px;
+  }
+
+  .header-toolbar {
+    height: 56px; /* Keep the header height consistent */
+    padding: 0 10px;
+  }
+
+  .sidenav-container {
+    flex-direction: column;
+  }
+
+  .content {
+    margin-top: 56px; /* Adjust content to avoid overlap with header */
+  }
+
+  mat-sidenav-content {
+    margin-left: 0;
+  }
+}

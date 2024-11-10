@@ -1,0 +1,43 @@
+<div class="projects-container">
+  <!-- Add Button in the top right corner -->
+  <button mat-flat-button color="primary" class="add-button" (click)="addClick()">
+    <mat-icon>add</mat-icon> Add Project
+  </button>
+
+  <!-- Projects Table -->
+  <table mat-table [dataSource]="projects" class="mat-elevation-z8">
+    <!-- Sr No Column with clickable link -->
+    <ng-container matColumnDef="srNo">
+      <th mat-header-cell *matHeaderCellDef> Sr No </th>
+      <td mat-cell *matCellDef="let project; let i = index">
+        <a (click)="navigateToProject(project._id)" style="cursor: pointer;">
+          {{ i + 1 }}
+        </a>
+      </td>
+    </ng-container>
+
+    <!-- Project Title Column -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef> Title </th>
+      <td mat-cell *matCellDef="let project"> {{ project.title }} </td>
+    </ng-container>
+
+    <!-- Project Description Column -->
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let project"> {{ project.description }} </td>
+    </ng-container>
+
+    <!-- Project Technologies Column -->
+    <ng-container matColumnDef="technologies">
+      <th mat-header-cell *matHeaderCellDef> Technologies </th>
+      <td mat-cell *matCellDef="let project"> {{ project.technologies }} </td>
+    </ng-container>
+
+
+
+    <!-- Header and Row Definitions -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

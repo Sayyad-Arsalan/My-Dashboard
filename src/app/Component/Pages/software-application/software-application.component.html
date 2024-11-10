@@ -1,0 +1,24 @@
+<div class="software-application-container">
+  <!-- Image Preview and File Input -->
+  <div class="image-upload">
+    <img *ngIf="imagePreview" [src]="imagePreview" alt="Software Application Image" class="image-preview" />
+    <input *ngIf="!softwareApplicationId" type="file" (change)="imageHandler($event)" class="choose-file-btn" />
+  </div>
+
+  <!-- Software Application Form -->
+  <form [formGroup]="softwareApplicationForm" class="form">
+    <!-- Software Application Name Field -->
+    <mat-form-field appearance="outline" class="form-field" [floatLabel]="'always'">
+      <mat-label>Software Application Name</mat-label>
+      <input matInput formControlName="name" placeholder="Enter name" />
+    </mat-form-field>
+
+    <!-- Cancel and Save Buttons -->
+    <div class="button-group">
+      <button mat-flat-button color="accent" (click)="cancel()">Cancel</button>
+      <button *ngIf="softwareApplicationId" mat-flat-button color="warn" (click)="delete()">Delete</button>
+      <button mat-flat-button color="primary" (click)="saveSoftwareApplication()" [disabled]="!softwareApplicationForm.valid">Save</button>
+    </div>
+  </form>
+</div>
+

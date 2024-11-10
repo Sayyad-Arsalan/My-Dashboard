@@ -1,0 +1,32 @@
+.skills-container {
+  position: relative;
+  padding: 16px;
+  padding-top: 48px;
+
+}
+
+.add-button {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+}
+
+table {
+  width: 100%;
+  margin-top: 26px;
+}
+
+th.mat-header-cell,
+td.mat-cell {
+  text-align: left;
+  padding: 8px;
+}
+
+a {
+  color: #3f51b5;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}

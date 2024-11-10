@@ -1,0 +1,85 @@
+<mat-card class="profile-card">
+  <mat-card-header>
+    <mat-card-title>Profile</mat-card-title>
+    <mat-card-subtitle>Full Profile Preview</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="profile-container">
+      <div class="image-section">
+        <div class="profile-image-container">
+          <img
+            *ngIf="user?.avatar?.url"
+            [src]="user.avatar.url"
+            alt="Profile Image"
+            class="profile-image"
+          />
+        </div>
+
+        <div class="resume-container">
+          <a *ngIf="user?.resume?.url" [href]="user.resume.url" target="_blank">
+            <img
+              [src]="user.resume.url"
+              alt="Resume"
+              class="resume-image"
+            />
+          </a>
+        </div>
+      </div>
+
+      <div class="profile-details">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Full Name</mat-label>
+          <input matInput [value]="user?.fullName" disabled />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput [value]="user?.email" disabled />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Phone</mat-label>
+          <input matInput [value]="user?.phone" disabled />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>About Me</mat-label>
+          <textarea matInput [value]="user?.aboutMe" disabled></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Portfolio URL</mat-label>
+          <input matInput [value]="user?.portfolioURL" disabled />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Github URL</mat-label>
+          <input matInput [value]="user?.githubURL" disabled />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>LinkedIn URL</mat-label>
+          <input matInput [value]="user?.linkedInURL" disabled />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Instagram URL</mat-label>
+          <input matInput [value]="user?.instagramURL" disabled />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Twitter (X) URL</mat-label>
+          <input matInput [value]="user?.twitterURL" disabled />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Facebook URL</mat-label>
+          <input matInput [value]="user?.facebookURL" disabled />
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-card-content>
+
+
+</mat-card>

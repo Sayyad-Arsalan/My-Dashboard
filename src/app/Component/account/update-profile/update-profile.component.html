@@ -1,0 +1,98 @@
+<mat-card class="profile-card">
+  <mat-card-header>
+    <mat-card-title>Update Profile</mat-card-title>
+    <mat-card-subtitle>Update Your Profile Here</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="profile-container">
+      <div class="image-section">
+        <div class="profile-image-container">
+          <img
+            *ngIf="user?.avatar?.url"
+            [src]="avatarPreview || user.avatar.url"
+            alt="Profile Image"
+            class="profile-image"
+          />
+          <input
+            type="file"
+            (change)="avatarHandler($event)"
+            class="avatar-update-btn"
+          />
+        </div>
+
+        <!-- Resume Container -->
+        <div class="resume-container">
+          <a *ngIf="user?.resume?.url" [href]="user.resume.url" target="_blank">
+            <img
+              [src]="resumePreview || user.resume.url"
+              alt="Resume"
+              class="resume-image"
+            />
+          </a>
+          <input type="file" (change)="resumeHandler($event)" class="avatar-update-btn" />
+        </div>
+      </div>
+
+
+
+
+      <div class="profile-details">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Full Name</mat-label>
+          <input matInput [(ngModel)]="user.fullName" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput [(ngModel)]="user.email" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Phone</mat-label>
+          <input matInput [(ngModel)]="user.phone" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>About Me</mat-label>
+          <textarea matInput [(ngModel)]="user.aboutMe"></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Portfolio URL</mat-label>
+          <input matInput [(ngModel)]="user.portfolioURL" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Github URL</mat-label>
+          <input matInput [(ngModel)]="user.githubURL" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>LinkedIn URL</mat-label>
+          <input matInput [(ngModel)]="user.linkedInURL" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Instagram URL</mat-label>
+          <input matInput [(ngModel)]="user.instagramURL" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Twitter (X) URL</mat-label>
+          <input matInput [(ngModel)]="user.twitterURL" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Facebook URL</mat-label>
+          <input matInput [(ngModel)]="user.facebookURL" />
+        </mat-form-field>
+
+      </div>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="onUpdate()">Save Changes</button>
+  </mat-card-actions>
+</mat-card>

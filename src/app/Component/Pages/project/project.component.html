@@ -1,0 +1,62 @@
+<div class="project-container">
+  <!-- Project Form -->
+  <form [formGroup]="projectForm" class="form">
+    <div class="image-upload">
+      <img *ngIf="projectBannerPreview" [src]="projectBannerPreview" alt="Project Banner" class="image-preview" />
+      <input type="file"  (change)="bannerHandler($event)" class="choose-file-btn" />
+    </div>
+    <!-- Title Field -->
+    <mat-form-field appearance="outline" class="form-field" [floatLabel]="'always'">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" placeholder="Enter project title" />
+    </mat-form-field>
+
+    <!-- Description Field -->
+    <mat-form-field appearance="outline" class="form-field" [floatLabel]="'always'">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" placeholder="Enter project description"></textarea>
+    </mat-form-field>
+
+    <!-- Project Link Field -->
+    <mat-form-field appearance="outline" class="form-field" [floatLabel]="'always'">
+      <mat-label>Project Link</mat-label>
+      <input matInput formControlName="projectLink" placeholder="Enter project link" />
+    </mat-form-field>
+
+    <!-- Git Repo Link Field -->
+    <mat-form-field appearance="outline" class="form-field" [floatLabel]="'always'">
+      <mat-label>Git Repo Link</mat-label>
+      <input matInput formControlName="gitRepoLink" placeholder="Enter Git repository link" />
+    </mat-form-field>
+
+    <!-- Deployed Field (Dropdown with Yes/No) -->
+    <mat-form-field appearance="outline" class="form-field" [floatLabel]="'always'">
+      <mat-label>Deployed</mat-label>
+      <mat-select placeholder="Deployed" formControlName="deployed">
+        <mat-option *ngFor="let deploy of deployDatasource" [value]="deploy.value">
+          {{ deploy.value }}
+        </mat-option>
+      </mat-select>
+
+    </mat-form-field>
+
+    <!-- Technologies Field -->
+    <mat-form-field appearance="outline" class="form-field" [floatLabel]="'always'">
+      <mat-label>Technologies</mat-label>
+      <input matInput formControlName="technologies" placeholder="Enter technologies used" />
+    </mat-form-field>
+
+    <!-- Stack Field -->
+    <mat-form-field appearance="outline" class="form-field" [floatLabel]="'always'">
+      <mat-label>Stack</mat-label>
+      <input matInput formControlName="stack" placeholder="Enter tech stack" />
+    </mat-form-field>
+
+    <!-- Cancel and Save Buttons -->
+    <div class="button-group">
+      <button mat-flat-button color="accent" (click)="cancel()">Cancel</button>
+      <button *ngIf="projectId" mat-flat-button color="warn" (click)="delete()">Delete</button>
+      <button mat-flat-button color="primary" (click)="saveProject()" [disabled]="!projectForm.valid">Save</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,19 @@
+<div class="messages-container">
+  <mat-card *ngFor="let message of Messages" class="message-card">
+    <mat-card-header>
+      <mat-card-title>From:- {{ message.senderName }}</mat-card-title>
+      <mat-card-subtitle>Subject:- {{ message.subject }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <p>Message:- {{ message.message }}</p>
+      <p class="date">{{ message.createdAt | date: 'longDate' }}</p>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-flat-button color="warn" (click)="deleteMessage(message._id)">
+        <mat-icon>delete</mat-icon> Delete
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

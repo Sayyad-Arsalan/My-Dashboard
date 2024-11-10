@@ -1,0 +1,136 @@
+<div class="dashboard-grid">
+
+      <mat-card class="dashboard-card large-card">
+        <mat-card-header>
+          <mat-card-title>About Me</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ userInfo.aboutMe }}</p>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-stroked-button color="primary" (click)="visitPortfolio()">Visit Portfolio</button>
+        </mat-card-actions>
+      </mat-card>
+
+      <mat-card class="dashboard-card small-card">
+        <mat-card-header>
+          <mat-card-title>Project Completed</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <h1><p>{{projects.length}}</p></h1>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-stroked-button color="primary" (click)="manageProject()">Manage Project</button>
+        </mat-card-actions>
+      </mat-card>
+
+    <!-- Small Card 2 -->
+      <mat-card class="dashboard-card small-card">
+        <mat-card-header>
+          <mat-card-title>Skills Aquired</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <h1><p>{{ skills.length }}</p></h1>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-stroked-button color="primary" (click)="manageSkill()">Manage Skill</button>
+        </mat-card-actions>
+      </mat-card>
+
+</div>
+
+
+<div class="dashboard-grid2">
+  <mat-card class="dashboard-card large-card">
+    <mat-card-header>
+      <mat-card-title>Projects</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table mat-table [dataSource]="projects" class="mat-elevation-z8 project-table">
+
+
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef> Title </th>
+          <td mat-cell *matCellDef="let project"> {{ project.title }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="technologies">
+          <th mat-header-cell *matHeaderCellDef> Technologies </th>
+          <td mat-cell *matCellDef="let project"> {{ project.technologies }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef> Actions </th>
+          <td mat-cell *matCellDef="let project">
+            <button mat-stroked-button color="primary" (click)="visitProject(project)">View</button>
+            <button mat-stroked-button color="accent" (click)="updateProject(project)">Update</button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="['title', 'technologies', 'actions']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['title', 'technologies', 'actions']"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div class="dashboard-grid2">
+  <mat-card class="dashboard-card large-card">
+    <mat-card-header>
+      <mat-card-title>Skills</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table mat-table [dataSource]="skills" class="mat-elevation-z8 project-table">
+
+
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef> Title </th>
+          <td mat-cell *matCellDef="let skill"> {{ skill.title }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="proficiency">
+          <th mat-header-cell *matHeaderCellDef> Proficiency </th>
+          <td mat-cell *matCellDef="let skill">
+            <mat-progress-bar
+              mode="determinate"
+              [value]="skill.proficiency"
+              [bufferValue]="100">
+            </mat-progress-bar>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="['title', 'proficiency',]"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['title', 'proficiency',]"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div class="dashboard-grid2">
+  <mat-card class="dashboard-card large-card">
+    <mat-card-header>
+      <mat-card-title>Software Application</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table mat-table [dataSource]="softwareApplications" class="mat-elevation-z8 project-table">
+
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Title </th>
+          <td mat-cell *matCellDef="let softwareApplication"> {{ softwareApplication.name }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="icon">
+          <th mat-header-cell *matHeaderCellDef> Icon </th>
+          <td mat-cell *matCellDef="let softwareApplication">
+            <img [src]="softwareApplication.svg.url" alt="{{ softwareApplication.name }} icon" width="24" height="24" />
+
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="['name', 'icon',]"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['name', 'icon',]"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>
