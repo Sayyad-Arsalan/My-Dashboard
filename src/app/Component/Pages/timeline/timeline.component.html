@@ -1,0 +1,36 @@
+<div class="timeline-container">
+  <!-- Timeline Form -->
+  <form [formGroup]="timelineForm" class="form">
+    <!-- Title Field -->
+    <mat-form-field appearance="outline" class="form-field" [floatLabel]="'always'">
+      <mat-label>Title</mat-label>
+      <input matInput formControlName="title" placeholder="Enter title" />
+    </mat-form-field>
+
+    <!-- Description Field -->
+    <mat-form-field appearance="outline" class="form-field" [floatLabel]="'always'">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description" placeholder="Enter description"></textarea>
+    </mat-form-field>
+
+    <!-- From Field -->
+    <mat-form-field appearance="outline" class="form-field" [floatLabel]="'always'">
+      <mat-label>From Year</mat-label>
+      <input matInput type="number" formControlName="from" placeholder="Enter from year" />
+    </mat-form-field>
+
+    <!-- To Field -->
+    <mat-form-field appearance="outline" class="form-field" [floatLabel]="'always'">
+      <mat-label>To Year</mat-label>
+      <input matInput type="number" formControlName="to" placeholder="Enter to year" />
+    </mat-form-field>
+
+    <!-- Cancel and Save Buttons -->
+    <div class="button-group">
+      <button mat-flat-button color="accent" (click)="cancel()">Cancel</button>
+      <button *ngIf="timelineId" mat-flat-button color="warn" (click)="delete()">Delete</button>
+      <button *ngIf="!timelineId" mat-flat-button color="primary" (click)="saveTimeline()" [disabled]="!timelineForm.valid">Save</button>
+    </div>
+  </form>
+</div>
+

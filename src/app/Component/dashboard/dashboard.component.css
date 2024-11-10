@@ -1,0 +1,67 @@
+.dashboard-grid {
+  padding: 16px;
+  display: flex;
+
+}
+.dashboard-grid2 {
+  padding: 16px;
+
+}
+.large-card {
+  width: 100%;
+}
+.small-card{
+  width: 100%;
+}
+.dashboard-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  margin: 5px;
+}
+
+.mat-mdc-card-title{
+  padding-bottom: 12px; /* Space between header and content */
+  border-bottom: 2px solid #a10078; /* Magenta border to match theme */
+}
+
+.mat-mdc-card-title {
+  color: #a10078; /* Set title color to match magenta */
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.mat-mdc-card-content {
+  padding-top: 12px; /* Add space on top of card content */
+  flex-grow: 1; /* Allow content to take remaining space */
+}
+
+mat-card-actions {
+  margin-top: auto; /* Align button at the bottom */
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 600px) {
+  .dashboard-grid {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+  }
+  .large-card {
+    width: 100%;
+  }
+}
+.project-table {
+  width: 100%;
+  margin-top: 16px;
+}
+
+@media (max-width: 600px) {
+  .project-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}

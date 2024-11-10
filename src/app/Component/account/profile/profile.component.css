@@ -1,0 +1,88 @@
+/* Make sure all labels have white text */
+mat-label {
+  color: white !important; /* Forces all labels to be white */
+}
+
+/* For autofill text to be white */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: #ffffff !important;
+  transition: background-color 5000s ease-in-out 0s;
+  box-shadow: inset 0 0 20px 20px #23232329;
+}
+.profile-card mat-card-title {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #5e35b1; /* Magenta-violet primary color */
+}
+.profile-card mat-card-subtitle {
+  font-size: 1rem;
+  color: #757575; /* Light grey */
+}
+.profile-card {
+  margin: 16px;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: white; /* Set text color of profile card to white */
+}
+
+.profile-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 16px;
+}
+
+.image-section {
+  position: relative; /* Needed for positioning the label on top of image */
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-image,
+.resume-image {
+  width: 100%;
+  max-width: 150px;
+  border-radius: 8px;
+}
+
+.profile-image-container mat-label {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.5); /* Optional: make label background semi-transparent for readability */
+  padding: 4px 8px;
+  color: white; /* Ensure the label text is white */
+  border-radius: 4px;
+}
+
+.profile-details mat-form-field {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .profile-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .profile-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .image-section {
+    flex-direction: row;
+  }
+}

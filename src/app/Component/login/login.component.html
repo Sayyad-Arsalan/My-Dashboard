@@ -1,0 +1,69 @@
+<div class="container">
+  <mat-card class="login-card">
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+
+    <mat-card>
+      <mat-card-content>
+        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+          <!-- Email Field -->
+          <mat-form-field appearance="outline" class="full-width" [floatLabel]="'always'">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              formControlName="email"
+              type="email"
+              required
+              [errorStateMatcher]="matcher"
+            />
+            <!-- <mat-hint *ngIf="loginForm.get('email')?.invalid">Errors appear instantly!</mat-hint> -->
+            <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('email')?.hasError('email') && !loginForm.get('email')?.hasError('required')">
+              Please enter a valid email address
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Password Field -->
+          <mat-form-field appearance="outline" class="full-width" [floatLabel]="'always'">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              formControlName="password"
+              type="password"
+              required
+              [errorStateMatcher]="matcher"
+            />
+            <!-- <mat-hint *ngIf="loginForm.get('password')?.invalid">Errors appear instantly!</mat-hint> -->
+            <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+              Password is <strong>required</strong>
+            </mat-error>
+            <mat-error
+              *ngIf="loginForm.get('password')?.hasError('minlength') && !loginForm.get('password')?.hasError('required')"
+            >
+              Minimum 6 characters
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Forgot Password Link -->
+          <div class="pass" (click)="navigateToForgotPassword()">Forgot Password?</div>
+
+          <!-- Submit Button -->
+          <button mat-raised-button color="primary" class="submit-button" type="submit" [disabled]="isLoading">
+            <ng-container *ngIf="!isLoading; else spinner">
+              Login
+            </ng-container>
+            <ng-template #spinner>
+              <mat-spinner diameter="20"></mat-spinner>
+            </ng-template>
+          </button>        </form>
+      </mat-card-content>
+    </mat-card>
+
+
+
+
+  </mat-card>
+</div>

@@ -1,0 +1,23 @@
+.messages-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}
+
+.message-card {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
+
+
+.date {
+  font-size: 0.8em;
+  color: #757575;
+}
+
+mat-card-actions {
+  display: flex;
+  justify-content: flex-end;
+}

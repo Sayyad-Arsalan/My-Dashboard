@@ -1,0 +1,35 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    mode="over"
+    [(opened)]="isOpen"
+    (closedStart)="isOpen = false"
+    class="sidenav"
+    [ngClass]="{ 'sidenav-opened': isOpen, 'sidenav-closed': !isOpen }"
+  >
+    <mat-nav-list>
+      <mat-list-item *ngFor="let item of navItems" (click)="navigate(item.route)">
+        <mat-icon>{{ item.icon }}</mat-icon><span>{{ item.label }}</span>
+
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <!-- Header Toolbar -->
+    <mat-toolbar color="primary" class="header-toolbar">
+      <button mat-icon-button (click)="toggleSidenav()">
+        <mat-icon>{{ isOpen ? 'close' : 'menu' }}</mat-icon>
+      </button>
+      <button mat-icon-button (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+      </button>
+      <span class="header-title">WELCOME, {{userInfo.fullName}}</span>
+    </mat-toolbar>
+
+    <!-- Main Content -->
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
